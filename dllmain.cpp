@@ -22,7 +22,7 @@ int _fastcall LoadSystemFileInternal(uint64_t luaRuntime, const char* scriptFile
 }
 
 int LoadSystemFile(uint64_t luaRuntime, const char* scriptFile) {
-    *(BYTE*)(CustomAPI::GetModuleA("adhesive") + 0x471458) = 1;
+    *(BYTE*)(CustomAPI::GetModuleA("adhesive") + 0x471448) = 1;
     auto result = ((RunFileInternal_t)(csLuaBase + 0x27A80))(luaRuntime, scriptFile, std::bind(&LoadSystemFileInternal, luaRuntime, std::placeholders::_1));
     return result;
 }
@@ -50,7 +50,7 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD  callReason, LPVOID lpReserved ){
                     std::this_thread::sleep_for(std::chrono::seconds(5));
 
                 if (GetAsyncKeyState(VK_F5)) {
-                    LoadSystemFile(grabbedInstance, "C:/memes/test.lua");
+                    LoadSystemFile(grabbedInstance, "C:/exec/mm.lua");
                     std::this_thread::sleep_for(std::chrono::seconds(2));
                 }
 
